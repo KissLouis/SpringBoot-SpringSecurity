@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.louis</groupId>
+	<artifactId>SpringBoot-SpringSecurity</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>SpringBoot-SpringSecurity</name>
+	<description>Spring Boot整合Spring Security实现安全管理</description>
+
+	<!-- Spring Boot整合安全控制及权限篇 -->
+	<modules>
+		<!-- Spring Boot整合Spring Security实现安全管理-入门（一）：登录和退出 -->
+		<module>springsecurity-01-login</module>
+		<!-- Spring Boot整合Spring Security实现安全管理-入门（二）：基于数据库验证 -->
+		<module>springsecurity-02-login-db</module>
+		<!-- Spring Boot整合Spring Security实现安全管理-入门（三）：密码加密 -->
+		<module>springsecurity-03-login-db-encrypt</module>
+		<!-- Spring Boot整合Spring Security实现安全管理-入门（四）：实现图形验证码 -->
+		<module>springsecurity-04-verifycode</module>
+		<!-- Spring Boot整合Spring Security实现安全管理-入门（五）：实现"记住我"功能 -->
+		<module>springsecurity-05-rememberme</module>
+		<!-- Spring Boot整合Spring Security实现安全管理-入门（六）：实现短信验证码功能 -->
+		<module>springsecurity-06-smscode</module>
+	</modules>
+
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.0.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<springboot.project.version>2.1.0.RELEASE</springboot.project.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${springboot.project.version}</version>
+			</dependency>
+
+			<!-- Spring Boot Test 依赖：测试模块，包括JUnit、Hamcrest、Mockito -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${springboot.project.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- Junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- spring-boot实现热部署 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<version>${springboot.project.version}</version>
+				<optional>true</optional>
+			</dependency>
+
+			<!-- lombok依赖 -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.6</version>
+				<optional>true</optional>
+			</dependency>
+
+			<!-- Spring Boot Spring Security 依赖 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+				<version>${springboot.project.version}</version>
+			</dependency>
+
+			<!-- Spring Boot Thymeleaf 依赖 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-thymeleaf</artifactId>
+				<version>${springboot.project.version}</version>
+			</dependency>
+
+			<!-- 数据源配置 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>${springboot.project.version}</version>
+			</dependency>
+
+			<!-- Spring Boot Mybatis 依赖 -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.0.0</version>
+			</dependency>
+
+			<!-- MySQL 连接驱动依赖 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.11</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- spring-social-web 依赖 -->
+			<dependency>
+				<groupId>org.springframework.social</groupId>
+				<artifactId>spring-social-web</artifactId>
+				<version>1.1.6.RELEASE</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<!--springboot的maven插件 -->
+	<!--以maven的形式为应用springboot支持 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- 该插件的主要功能是进行项目的打包发布处理 -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--开启热部署 -->
+				<configuration>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
