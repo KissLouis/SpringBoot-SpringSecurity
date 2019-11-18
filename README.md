@@ -31,7 +31,7 @@ Spring Boot知识点整理、工程实践，并结合工作案例进行深入。
     <u>MySQL 8.0 </u>  
     <u>Spring Boot 2.1.0</u> 
 2. 初始化数据库 执行init.sql
-3. 修改相应模块application.yml配置，设置IDE开发环境为UTF-8，IDE需配置Lombok
+3. 修改相应模块application.yml配置，设置IDE开发环境为UTF-8，IDE需配置Lombok插件
 4. 运行相应模块Application
 
 
